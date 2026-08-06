@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 
 # Lê o arquivo "league.csv" e armazena seus dados
 # na variável "df" (DataFrame).
-df = pd.read_csv("league.csv")
+df = pd.read_csv(r"conjunto-dados.csv")
 
 # ======================================================
 # EXPLORAÇÃO DOS DADOS
