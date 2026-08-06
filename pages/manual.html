@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manual de instalação e utilização do JupyterLab com Anaconda">
+    <title>Manual de Instalação - Análise de Dados</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/code-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body class="fade-in">
+
+    <!-- Cabeçalho / Navbar -->
+    <header>
+        <nav class="navbar">
+            <h1>
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/icons/logo.svg" alt="Logotipo do curso de Análise de Dados">
+                    Análise de Dados
+                </a>
+            </h1>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="exemplo-python.html">Exemplo Python</a></li>
+                <li><a href="manual.html" class="active">Manual</a></li>
+                <li><a href="materiais.html">Materiais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <section class="section manual">
+            <div class="container">
+                <h2>Manual de Instalação e Utilização do JupyterLab com Anaconda</h2>
+                <p>Este manual ensina a instalar o Anaconda, abrir o JupyterLab e criar o primeiro projeto de Análise de Dados em Python.</p>
+
+                <h3>1. O que é o Anaconda?</h3>
+                <p>O <strong>Anaconda</strong> é uma distribuição gratuita do Python voltada para Ciência e Análise de Dados. Ao instalá-lo, você já terá diversas ferramentas prontas para uso:</p>
+                <ul>
+                    <li>Python</li>
+                    <li>Jupyter Notebook</li>
+                    <li>JupyterLab</li>
+                    <li>Pandas</li>
+                    <li>NumPy</li>
+                    <li>Matplotlib</li>
+                    <li>Seaborn</li>
+                    <li>Centenas de outras bibliotecas</li>
+                </ul>
+                <p>Isso evita instalar cada biblioteca separadamente.</p>
+
+                <h3>2. Baixando o Anaconda</h3>
+                <p>Acesse o site oficial: <a href="https://www.anaconda.com/download" target="_blank">anaconda.com/download</a></p>
+                <p>Baixe a versão correspondente ao seu sistema operacional (Windows). Após o download:</p>
+                <ol>
+                    <li>Execute o instalador.</li>
+                    <li>Clique em <strong>Next</strong>.</li>
+                    <li>Aceite os termos.</li>
+                    <li>Escolha <strong>Just Me</strong>.</li>
+                    <li>Clique em <strong>Next</strong>.</li>
+                    <li>Escolha a pasta de instalação.</li>
+                    <li>Clique em <strong>Install</strong>.</li>
+                    <li>Aguarde a instalação.</li>
+                    <li>Clique em <strong>Finish</strong>.</li>
+                </ol>
+                <p>Pronto! O Python e todas as bibliotecas já estarão instalados.</p>
+
+                <h3>3. Criando uma pasta para os projetos</h3>
+                <p>Crie uma pasta para armazenar seus trabalhos. Exemplo:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">C:\AnaliseDados</code></pre>
+                </div>
+                <p>Dentro dessa pasta ficarão:</p>
+                <div class="code-block">
+                     <pre><code class="language-plaintext">C:\AnaliseDados
+    "arquivo".csv
+               </code></pre>
+                </div>
+
+                <h3>4. Criando um arquivo BAT para abrir o Jupyter</h3>
+                <p>Dentro da pasta do projeto: clique com o botão direito → Novo → Documento de Texto. Renomeie para:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">abrir_jupyter.bat</code></pre>
+                </div>
+                <p>Edite o arquivo e coloque o seguinte conteúdo:</p>
+                <div class="code-block">
+                    <button class="copy-btn" data-target="codigo-bat">Copiar</button>
+                    <pre><code id="codigo-bat" class="language-batch">@echo off
+
+cd /d "%~dp0"
+
+jupyter lab
+
+pause</code></pre>
+                </div>
+                <p>Salve. Agora basta dar dois cliques nesse arquivo. O navegador abrirá automaticamente o JupyterLab.</p>
+
+                <h3>5. Caso o comando não funcione</h3>
+                <p>Se aparecer a mensagem:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">'jupyter' não é reconhecido como um comando...</code></pre>
+                </div>
+                <p>Abra o menu Iniciar, pesquise por <strong>Anaconda Prompt</strong> e execute:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">jupyter lab</code></pre>
+                </div>
+
+                <h3>6. Abrindo um projeto</h3>
+                <p>Quando o Jupyter abrir, aparecerá uma tela semelhante a um explorador de arquivos. Navegue até a pasta onde está seu CSV, por exemplo <strong>AnaliseDados</strong>.</p>
+
+                <h3>7. Criando um Notebook</h3>
+                <p>Clique em <strong>Python 3</strong>. Será criado um novo arquivo, por exemplo <strong>Untitled.ipynb</strong>. Renomeie para:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">Analise.ipynb</code></pre>
+                </div>
+
+                <h3>8. O que é uma célula?</h3>
+                <p>O Notebook funciona por células. Cada célula pode conter código Python, texto, tabelas ou gráficos, e pode ser executada individualmente.</p>
+
+                <h3>9. Executando uma célula</h3>
+                <p>Digite:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">print("Olá Mundo")</code></pre>
+                </div>
+                <p>Depois pressione <strong>Shift + Enter</strong>. Resultado:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">Olá Mundo</code></pre>
+                </div>
+
+                <h3>10. Importando bibliotecas</h3>
+                <div class="code-block">
+                    <button class="copy-btn" data-target="codigo-imports">Copiar</button>
+                    <pre><code id="codigo-imports" class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns</code></pre>
+                </div>
+
+                <h3>11. Carregando um arquivo CSV</h3>
+                <p>Supondo que exista um arquivo <strong>league.csv</strong> na mesma pasta do Notebook, digite:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">df = pd.read_csv("league.csv")</code></pre>
+                </div>
+
+                <h3>12. Visualizando os dados</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">df.head()      # primeiras linhas
+df.info()      # informações gerais
+df.describe()  # estatísticas</code></pre>
+                </div>
+
+                <h3>13. Limpando os dados</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">df.isnull().sum()   # verifica valores nulos
+df = df.fillna(0)   # substitui valores nulos por 0</code></pre>
+                </div>
+
+                <h3>14. Agrupando dados</h3>
+                <p>Calcular a média da taxa de vitória por Lane:</p>
+                <div class="code-block">
+                    <pre><code class="language-python">df.groupby("Lane")["WinRate"].mean()</code></pre>
+                </div>
+
+                <h3>15. Criando um gráfico</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">sns.barplot(
+    data=df,
+    x="Lane",
+    y="WinRate"
+)
+
+plt.title("Win Rate por Lane")
+plt.show()</code></pre>
+                </div>
+                <p>O gráfico aparecerá logo abaixo da célula.</p>
+
+                <h3>16. Inserindo textos</h3>
+                <p>Clique em uma célula, depois em <strong>Cell → Cell Type → Markdown</strong>. Agora escreva:</p>
+                <div class="code-block">
+                    <pre><code class="language-plaintext"># Introdução
+
+Neste trabalho iremos analisar os dados do League of Legends.</code></pre>
+                </div>
+                <p>Execute a célula. Ela ficará formatada como um documento.</p>
+
+                <h3>17. Atalhos úteis</h3>
+                <table>
+                    <thead>
+                        <tr><th>Atalho</th><th>Função</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Shift + Enter</td><td>Executa a célula</td></tr>
+                        <tr><td>Ctrl + Enter</td><td>Executa sem mudar de célula</td></tr>
+                        <tr><td>A</td><td>Nova célula acima</td></tr>
+                        <tr><td>B</td><td>Nova célula abaixo</td></tr>
+                        <tr><td>DD</td><td>Exclui a célula</td></tr>
+                        <tr><td>M</td><td>Converte para Markdown</td></tr>
+                        <tr><td>Y</td><td>Converte para Código</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>18. Fluxo recomendado para Análise de Dados</h3>
+                <ol>
+                    <li>Importar bibliotecas.</li>
+                    <li>Carregar o arquivo CSV.</li>
+                    <li>Visualizar os dados.</li>
+                    <li>Explorar a estrutura da tabela.</li>
+                    <li>Identificar problemas.</li>
+                    <li>Limpar os dados.</li>
+                    <li>Organizar os dados.</li>
+                    <li>Realizar análises.</li>
+                    <li>Criar gráficos.</li>
+                    <li>Escrever as conclusões.</li>
+                </ol>
+
+                <h3>19. Estrutura recomendada do Notebook</h3>
+                <div class="code-block">
+                    <pre><code class="language-plaintext">Introdução
+    ↓
+Importação das bibliotecas
+    ↓
+Leitura do CSV
+    ↓
+Exploração dos dados
+    ↓
+Limpeza dos dados
+    ↓
+Tratamento dos dados
+    ↓
+Análise dos dados
+    ↓
+Gráficos
+    ↓
+Conclusão</code></pre>
+                </div>
+                <p>Seguindo essa estrutura, seus projetos ficarão organizados, fáceis de entender e semelhantes aos utilizados por profissionais da área de Ciência e Análise de Dados.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2026 - Aulas de Análise de Dados</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/copy.js"></script>
+</body>
+</html>

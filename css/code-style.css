@@ -1,0 +1,88 @@
+/* ===== Bloco de código com botão de copiar ===== */
+.code-block {
+    position: relative;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.code-block pre {
+    margin: 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    background-color: var(--primary);
+    color: var(--bg-darker);
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 0.9rem;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+}
+
+.copy-btn:hover {
+    background-color: #007a8a;
+    color: #fff;
+}
+
+.copy-btn.copied {
+    background-color: var(--card-green);
+    color: #fff;
+}
+
+/* ===== Conteúdo do manual (texto corrido, listas, tabela) ===== */
+.manual h3 {
+    color: var(--primary);
+    margin-top: 1rem;
+}
+
+.manual h4 {
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.manual ol,
+.manual ul {
+    padding-left: 1.5rem;
+}
+
+.manual table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.manual table th,
+.manual table td {
+    border: 1px solid #4a4a4a;
+    padding: 0.6rem 1rem;
+    text-align: left;
+}
+
+.manual table th {
+    background-color: var(--bg-darker);
+    color: var(--primary);
+}
+
+.manual .code-block {
+    margin: 1rem 0;
+}
+
+.manual .code-block pre {
+    padding: 1rem;
+}

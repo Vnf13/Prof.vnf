@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exemplo de código Python para Análise de Dados">
+    <title>Exemplo de Código Python - Análise de Dados</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/code-style.css">
+    <!-- Highlight.js para colorir a sintaxe do código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body class="fade-in">
+
+    <!-- Cabeçalho / Navbar -->
+    <header>
+        <nav class="navbar">
+            <h1>
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/icons/logo.svg" alt="Logotipo do curso de Análise de Dados">
+                    Análise de Dados
+                </a>
+            </h1>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="exemplo-python.html" class="active">Exemplo Python</a></li>
+                <li><a href="manual.html">Manual</a></li>
+                <li><a href="materiais.html">Materiais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2>Exemplo de Análise de Dados em Python</h2>
+                <p>Script completo, comentado passo a passo, usando Pandas, Seaborn e Matplotlib. Copie e cole no seu Notebook para testar.</p>
+
+                <div class="code-block">
+                    <button class="copy-btn" data-target="codigo-exemplo">Copiar código</button>
+                    <pre><code id="codigo-exemplo" class="language-python"># ======================================================
+# INTRODUÇÃO
+# ======================================================
+# Neste projeto iremos analisar um conjunto de dados
+# utilizando as principais bibliotecas de Análise de Dados.
+
+# Importa a biblioteca Pandas e cria o apelido "pd".
+# O Pandas será utilizado para carregar, organizar e analisar os dados.
+import pandas as pd
+
+# Importa o Seaborn para criar gráficos mais bonitos.
+import seaborn as sns
+
+# Importa o Matplotlib para exibir os gráficos.
+import matplotlib.pyplot as plt
+
+# ======================================================
+# CARREGAMENTO DOS DADOS
+# ======================================================
+# Lê o arquivo "league.csv" e armazena seus dados
+# na variável "df" (DataFrame).
+df = pd.read_csv("league.csv")
+
+# ======================================================
+# EXPLORAÇÃO DOS DADOS
+# ======================================================
+# Exibe as 5 primeiras linhas da tabela.
+# Serve para verificar se o arquivo foi carregado corretamente.
+df.head()
+
+# Mostra informações gerais da tabela:
+# - Quantidade de linhas
+# - Quantidade de colunas
+# - Tipo de cada coluna
+# - Valores nulos
+df.info()
+
+# Exibe estatísticas das colunas numéricas:
+# média, mínimo, máximo, mediana, quartis e desvio padrão.
+df.describe()
+
+# ======================================================
+# LIMPEZA DOS DADOS
+# ======================================================
+# Conta quantos valores nulos existem em cada coluna.
+df.isnull().sum()
+
+# Substitui todos os valores nulos por 0.
+# (Em uma análise real nem sempre essa é a melhor opção.)
+df = df.fillna(0)
+
+# ======================================================
+# ANÁLISE DOS DADOS
+# ======================================================
+# Agrupa os dados pela coluna "Lane"
+# e calcula a média da coluna "WinRate"
+# para cada grupo.
+df.groupby("Lane")["WinRate"].mean()
+
+# ======================================================
+# VISUALIZAÇÃO DOS DADOS
+# ======================================================
+# Cria um gráfico de barras mostrando
+# a taxa média de vitória por Lane.
+sns.barplot(
+    data=df,
+    x="Lane",
+    y="WinRate"
+)
+
+# Define o título do gráfico.
+plt.title("Taxa média de vitória por Lane")
+
+# Define o nome do eixo X.
+plt.xlabel("Lane")
+
+# Define o nome do eixo Y.
+plt.ylabel("Win Rate (%)")
+
+# Exibe o gráfico na tela.
+plt.show()
+
+# ======================================================
+# CONCLUSÃO
+# ======================================================
+# Após analisar os dados e visualizar os gráficos,
+# podemos interpretar os resultados e tirar conclusões
+# sobre o conjunto de dados analisado.
+</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2026 - Aulas de Análise de Dados</p>
+    </footer>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/copy.js"></script>
+</body>
+</html>

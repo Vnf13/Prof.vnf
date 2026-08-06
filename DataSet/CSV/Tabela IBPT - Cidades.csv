@@ -1,0 +1,28 @@
+uf34,estado34,icms34,icmsint34,icmsimp34,difnac34,difimp34,perfre34,codwes34,codrst34,codrdf34,usuario34,datlan34,sql_rowid,sr_deleted,webser34,endcon34,aliibs34
+MG,"MINAS GERAIS",18.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÖÍ,202606081454,1,,SVC-AN,https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml,0.10
+SP,"SAO PAULO",12.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÍÖ,202511121456,2,,SVC-AN,https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode,0.10
+GO,GOIAS,7.00,17.00,NULL,NULL,NULL,NULL,SiglaUF,1206,4405,ÖÖÖÍ,202511121456,3,,SVC-RS,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+RS,"RIO G SUL",12.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÍÖ,202511121456,4,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+SC,"SANTA CATARINA",12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,5,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+DF,"DISTRITO FEDERAL",7.00,7.00,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÒ,202511121456,6,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+RN,"RIO G NORTE",7.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÔ,202511121456,7,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+MT,"MATO GROSSO",7.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÎÒ,202511121456,8,,SVC-RS,https://www.sefaz.mt.gov.br/cte/qrcode,0.10
+MS,"MATO G SUL",12.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÍÖ,202511121456,9,,SVC-RS,http://www.dfe.ms.gov.br/cte/qrcode,0.10
+PE,PERNAMBUCO,12.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÍÖ,202511121456,10,,SVC-RS,https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode,0.10
+SE,SERGIPE,7.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÔ,202511121456,11,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+CE,CEARA,7.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÖÍ,202606101555,12,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+BA,BAHIA,7.00,20.50,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÎÒ,202511121456,13,,SVC-RS,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+RJ,"RIO JANEIRO",12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,14,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+AC,ACRE,7.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÔ,202511121456,15,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+AL,ALAGOAS,7.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÔ,202511121456,16,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+AP,AMAPA,7.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÔ,202511121456,17,,SVC-AN,https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode,0.10
+AM,AMAZONAS,7.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÎÔ,202511121456,18,,SVC-RS,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+ES,"ESPIRITO SANTOS",7.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÎÔ,202511121456,19,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+MA,MARANHAO,7.00,NULL,NULL,NULL,NULL,NULL,SVAN,1206,3178,ÖÖÎÔ,202511121456,20,,SVC-RS,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+PR,PARANA,12.00,NULL,NULL,NULL,NULL,NULL,SiglaUF,1206,3178,ÖÖÍÖ,202511121456,21,,SVC-RS,http://www.fazenda.pr.gov.br/cte/qrcode,0.10
+PB,PARAIBA,12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,22,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+PA,PARA,12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,23,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+PI,PIAUI,12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,24,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+RO,RONDONIA,12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,25,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10
+RR,RORAIMA,12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,26,,SVC-AN,https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode,0.10
+TO,TOCANTIS,12.00,NULL,NULL,NULL,NULL,NULL,SVRS,1206,3178,ÖÖÍÖ,202511121456,27,,SVC-AN,https://dfe-portal.svrs.rs.gov.br/cte/qrCode,0.10

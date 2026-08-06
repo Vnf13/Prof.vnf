@@ -1,0 +1,227 @@
+:root {
+  --primary: #00bcd4;
+  --bg-dark: #303030;
+  --bg-darker: #222;
+  --bg-light: #383838;
+  --text-light: #fff;
+  --card-yellow: #f9b234;
+  --card-green: #3ecd5e;
+  --card-red: #e44002;
+  --card-purple: #952aff;
+  --card-pink: #cd3e94;
+  --card-blue: #4c49ea;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+/* Navbar / Header */
+header {
+  background: var(--bg-darker);
+  color: var(--text-light);
+  padding: 1rem 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.navbar .logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+.navbar .logo-link img {
+  width: 32px;
+  height: auto;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.navbar ul li a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  color: var(--primary);
+}
+
+/* Seções */
+.section {
+  padding: 4rem 0;
+}
+
+.bg-light {
+  background: var(--bg-light);
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Botão de destaque (ex.: "Ver materiais") */
+.btn-primary {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--primary);
+  color: var(--bg-darker);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #007a8a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Grid genérico (usado por listas de cards) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Cards */
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #121212;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  z-index: 2;
+  position: relative;
+}
+
+.card p {
+  margin-bottom: 0.5rem;
+  z-index: 2;
+  position: relative;
+  color: #fff;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  top: -60px;
+  right: -60px;
+  z-index: 1;
+  transition: all 0.5s ease;
+  opacity: 0.8;
+}
+
+.card:nth-child(6n+1)::before { background-color: var(--card-yellow); }
+.card:nth-child(6n+2)::before { background-color: var(--card-green); }
+.card:nth-child(6n+3)::before { background-color: var(--card-red); }
+.card:nth-child(6n+4)::before { background-color: var(--card-purple); }
+.card:nth-child(6n+5)::before { background-color: var(--card-pink); }
+.card:nth-child(6n+6)::before { background-color: var(--card-blue); }
+
+.card:hover::before {
+  transform: scale(10);
+  opacity: 0.2;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  background: var(--bg-darker);
+  color: var(--text-light);
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+/* Responsividade */
+@media only screen and (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .container {
+    width: 95%;
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+}
