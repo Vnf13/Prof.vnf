@@ -18,10 +18,7 @@ import matplotlib.pyplot as plt
 
 # Lê o arquivo "league.csv" e armazena seus dados
 # na variável "df" (DataFrame).
-df = pd.read_csv(
-    r"C:\Users\vini_\OneDrive\Documentos\analise\conjunto-dados.csv",
-    sep=";"
-)
+df = pd.read_csv(r"C:\Users\vini_\OneDrive\Documentos\analise\conjunto-dados.csv")
 
 # ======================================================
 # EXPLORAÇÃO DOS DADOS
@@ -47,12 +44,23 @@ df.isnull().sum()
 df = df.fillna(0)
 
 # ======================================================
+# TRATAMENTO DA COLUNA WIN RATE
+# ======================================================
+
+# Remove o símbolo %
+df["W%"] = df["W%"].str.replace("%", "")
+
+# Converte a coluna para número
+# Valores "-" serão transformados em vazio (NaN)
+df["W%"] = pd.to_numeric(df["W%"], errors="coerce")
+
+# ======================================================
 # ANÁLISE DOS DADOS
 # ======================================================
 
 # Agrupa os dados pela coluna "Lane"
 # e calcula a média da coluna "WinRate".
-media_lane = df.groupby("Lane")["WinRate"].mean()
+media_lane = df.groupby("Pos")["W%"].mean()
 
 # ======================================================
 # VISUALIZAÇÃO DOS DADOS
