@@ -51,7 +51,7 @@ df = df.fillna(0)
 df["W%"] = df["W%"].str.replace("%", "")
 
 # Converte a coluna para número
-# Valores "-" serão transformados em vazio (NaN)
+# Valores "-" serão transformados em vazio
 df["W%"] = pd.to_numeric(df["W%"], errors="coerce")
 
 # ======================================================
