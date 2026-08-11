@@ -1,0 +1,162 @@
+import glob
+import os
+from datetime import datetime
+import numpy as np
+import pandas as pd
+from PIL import Image
+from sklearn.cluster import KMeans
+
+# ==============================================================================
+# 1. FUNÇÃO: TRADUÇÃO DE RGB PARA NOME DA COR
+# ==============================================================================
+def rgb_para_nome_cor(rgb):
+  """Compara o valor RGB extraído da imagem com uma paleta de referência
+
+  utilizando a Distância Euclidiana para encontrar o nome da cor mais próxima.
+  """
+  # Paleta de referência com os valores RGB médios de cores automotivas comuns
+  paleta_referencia = {
+      'Branco': (235, 235, 235),
+      'Preto': (30, 30, 30),
+      'Prata / Cinza': (150, 150, 150),
+      'Vermelho': (180, 30, 30),
+      'Azul': (30, 60, 160),
+      'Amarelo': (220, 200, 30),
+      'Verde': (30, 130, 50),
+      'Marrom / Bege': (120, 80, 50),
+  }
+
+  distancia_minima = float('inf')
+  cor_detectada = 'Outra'
+
+  # Percorre cada cor da paleta calculando a diferença geométrica 3D (Espaço RGB)
+  for nome, ref_rgb in paleta_referencia.items():
+    # Cálculo da Distância Euclidiana entre dois pontos no espaço 3D: sqrt((r1-r2)^2 + (g1-g2)^2 + (b1-b2)^2)
+    dist = np.sqrt(sum((a - b) ** 2 for a, b in zip(rgb, ref_rgb)))
+
+    # Atualiza a cor se encontrar uma distância menor que a anterior
+    if dist < distancia_minima:
+      distancia_minima = dist
+      cor_detectada = nome
+
+  return cor_detectada
+
+
+# ==============================================================================
+# 2. FUNÇÃO PRINCIPAL: PROCESSAMENTO DE IMAGENS E APLICAÇÃO DO K-MEANS
+# ==============================================================================
+def reconhecer_cores_pasta(
+    pasta_imagens, arquivo_csv_saida='resultado_veiculos.csv'
+):
+  """Lê uma pasta de imagens, aplica o K-Means (Scikit-Learn) para extrair
+
+  a cor dominante do veículo e exporta os metadados para um arquivo CSV.
+  """
+  dados = []
+
+  # Padrões de extensoes aceitas para a busca
+  extensoes = ['*.jpg', '*.jpeg', '*.png', '*.JPG', '*.JPEG', '*.PNG']
+  caminhos_imagens = []
+
+  # Mapeia todos os arquivos de imagem presentes no diretório informado
+  for ext in extensoes:
+    caminhos_imagens.extend(glob.glob(os.path.join(pasta_imagens, ext)))
+
+  # Validação de segurança caso a pasta esteja vazia ou o caminho esteja incorreto
+  if not caminhos_imagens:
+    print(f'Nenhuma imagem encontrada no caminho: {pasta_imagens}')
+    return
+
+  print(
+      f"Encontradas {len(caminhos_imagens)} imagens. Iniciando o"
+      ' processamento...\n'
+  )
+
+  # Loop de processamento imagem por imagem
+  for caminho in caminhos_imagens:
+    try:
+      # --- ETAPA A: EXTRAÇÃO DE METADADOS DO ARQUIVO ---
+      nome_arquivo = os.path.basename(caminho)  # Nome simples do arquivo
+      timestamp_modificacao = os.path.getmtime(
+          caminho
+      )  # Data/Hora em segundos
+      data_arquivo = datetime.fromtimestamp(timestamp_modificacao).strftime(
+          '%Y-%m-%d %H:%M:%S'
+      )  # Formatação textual legível
+
+      # --- ETAPA B: PRÉ-PROCESSAMENTO DA IMAGEM ---
+      # 1. Carrega a imagem e converte explicitamente para o padrão de 3 canais (RGB)
+      img = Image.open(caminho).convert('RGB')
+
+      # 2. Redimensiona para 100x100 pixels (reduz drasticamente o uso de memória e acelera o K-Means)
+      img_pequena = img.resize((100, 100))
+
+      # 3. Converte a matriz de imagem PIL em uma estrutura de dados NumPy (Matriz tridimensional)
+      img_array = np.array(img_pequena)
+
+      # --- ETAPA C: TRATAMENTO DE RUÍDO (RECORTE CENTRAL) ---
+      # Captura altura (h) e largura (w) da imagem
+      h, w, _ = img_array.shape
+
+      # Corta 25% de cada borda, mantendo apenas a região central (50% do meio)
+      # Isso ajuda a descartar ruídos externos como asfalto, gramado, céu e fundo
+      recorte = img_array[int(h * 0.25) : int(h * 0.75), int(w * 0.25) : int(w * 0.75)]
+
+      # Achata a matriz 3D para uma lista 2D de pixels: [Total_de_Pixels, 3_Canais_RGB]
+      pixels = recorte.reshape(-1, 3)
+
+      # --- ETAPA D: APLICAÇÃO DO SCIKIT-LEARN (K-MEANS) ---
+      # Instancia o modelo K-Means configurado para agrupar os pixels em 3 clusters
+      # (Geralmente divididos entre: Cor da lataria, Sombras/Pneus/Vidros e Reflexos)
+      kmeans = KMeans(n_clusters=3, random_state=42, n_init=5)
+
+      # Treina o modelo com a matriz de pixels recortados
+      kmeans.fit(pixels)
+
+      # Identifica qual grupo (cluster) recebeu a maior quantidade de pixels atribuídos
+      labels, counts = np.unique(kmeans.labels_, return_counts=True)
+      indice_dominante = labels[np.argmax(counts)]
+
+      # Extrai o centroide (valor RGB médio) do maior grupo de pixels
+      rgb_dominante = kmeans.cluster_centers_[indice_dominante].astype(int)
+
+      # --- ETAPA E: MAPEAMENTO E ARMAZENAMENTO ---
+      # Converte os números RGB para o nome da cor em texto
+      cor_veiculo = rgb_para_nome_cor(rgb_dominante)
+
+      # Guarda os dados estruturados do registro atual
+      dados.append({
+          'nome_do_arquivo': nome_arquivo,
+          'data_do_arquivo': data_arquivo,
+          'cor_de_veiculo': cor_veiculo,
+      })
+
+      print(f'✔ {nome_arquivo} | Data: {data_arquivo} | Cor: {cor_veiculo}')
+
+    except Exception as e:
+      print(f'✘ Erro ao processar o arquivo {caminho}: {e}')
+
+  # --- ETAPA F: EXPORTAÇÃO DOS DADOS ---
+  # Transforma a lista de dicionários em um DataFrame estruturado do Pandas
+  df = pd.DataFrame(dados)
+
+  # Salva o DataFrame como um arquivo CSV no diretório raiz de execução
+  df.to_csv(arquivo_csv_saida, index=False, encoding='utf-8-sig')
+
+  print(
+      '\n Processamento concluído com sucesso!'
+      f" O arquivo CSV foi gerado na raiz: '{arquivo_csv_saida}'"
+  )
+  return df
+
+
+# ==============================================================================
+# 3. EXECUÇÃO DO FLUXO
+# ==============================================================================
+# Informe aqui o caminho da pasta onde estão as fotos (do Drive ou local)
+pasta_das_fotos = '/content/drive/MyDrive/fotos_carros'
+
+# Executa a função principal gerando o arquivo 'resultado_veiculos.csv' na raiz do Colab
+df_resultado = reconhecer_cores_pasta(
+    pasta_imagens=pasta_das_fotos, arquivo_csv_saida='resultado_veiculos.csv'
+)
