@@ -1,0 +1,7 @@
+# ============================================================
+# 1. CONECTAR AO GOOGLE DRIVE
+# ============================================================
+from google.colab import drive
+
+drive.mount('/content/drive')
+
