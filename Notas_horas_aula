@@ -1,0 +1,54 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+#Os dados (10 alunos: horas de estudo e nota da prova)
+horas_estudo = np.array([1, 2, 2, 3, 4, 5, 5, 6, 7, 8]).reshape(-1, 1)
+nota_prova   = np.array([3.5, 4.0, 5.0, 5.5, 6.0, 6.5, 7.5, 8.0, 8.5, 9.5])
+
+print("Dados de treino:")
+for h, n in zip(horas_estudo.flatten(), nota_prova):
+    print(f"  {h}h de estudo -> nota {n}")
+
+#Criar o modelo (ainda vazio, sem aprender nada)
+modelo = LinearRegression()
+print("Modelo criado. Ainda não foi treinado.")
+
+#Treinar (FASE SUPERVISIONADA: entregamos pergunta + resposta certa)
+modelo.fit(horas_estudo, nota_prova)
+
+print(f"Inclinação da reta (coef_):      {modelo.coef_[0]:.2f}")
+print(f"Onde a reta começa (intercept_): {modelo.intercept_:.2f}")
+print(f"Fórmula aprendida: nota = {modelo.coef_[0]:.2f} x horas + {modelo.intercept_:.2f}")
+
+#Prever (FASE DE USO: só entregamos a pergunta, sem resposta)
+nota_prevista = modelo.predict([[4.5]])
+print(f"Aluno que estudou 4.5h -> nota prevista: {nota_prevista[0]:.2f}")
+
+#Visualizar: pontos reais + reta aprendida + previsão
+plt.figure(figsize=(7, 5))
+plt.scatter(horas_estudo, nota_prova, color="steelblue", s=80, label="Alunos reais (dados)", zorder=3)
+
+linha_x = np.linspace(0, 9, 100).reshape(-1, 1)
+linha_y = modelo.predict(linha_x)
+plt.plot(linha_x, linha_y, color="firebrick", linewidth=2, label="Reta aprendida pelo modelo")
+
+plt.scatter([4.5], nota_prevista, color="green", s=120, marker="*", label="Previsão (aluno novo, 4.5h)", zorder=4)
+
+plt.xlabel("Horas de estudo")
+plt.ylabel("Nota da prova")
+plt.title("Regressão Linear: o modelo aprendeu a relação horas -> nota")
+plt.legend()
+plt.grid(alpha=0.3)
+plt.tight_layout()
+plt.show()
+
+#(opcional/atividade) - Testar outros valores
+for teste in [3, 6.2, 9, 15]:
+    previsao = modelo.predict([[teste]])
+    print(f"{teste}h de estudo -> nota prevista: {previsao[0]:.2f}")
+
+# Pergunta pra turma: por que 15h previu uma nota impossível (acima de 10)?
+# Resposta esperada: o modelo não sabe que nota máxima é 10 - ele só
+# repete o padrão da reta pra qualquer número, mesmo fora da faixa
+# que ele viu durante o treino (isso se chama extrapolação).
