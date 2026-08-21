@@ -1,10 +1,13 @@
-| Campo         | Valor                 | Significado                                                         |
-| ------------- | --------------------- | ------------------------------------------------------------------- |
-| **Data/hora** | `2024-06-01 08:00:00` | Momento em que a comunicação foi registrada                         |
-| **SRC**       | `10.0.0.15`           | **Source (origem)** — IP do dispositivo que iniciou a conexão       |
-| **DST**       | `10.0.0.9`            | **Destination (destino)** — IP do dispositivo que recebeu a conexão |
-| **PORT**      | `3389`                | Porta utilizada na comunicação                                      |
-| **PROTO**     | `TCP`                 | Protocolo de transporte utilizado                                   |
-| **STATUS**    | `OK`                  | Resultado da comunicação — nesse caso, realizada com sucesso        |
-| **LATENCY**   | `14ms`                | Tempo de resposta da comunicação: 14 milissegundos                  |
-| **BYTES**     | `4589`                | Quantidade de dados transferidos, nesse registro, 4.589 bytes       |
+| Campo         | Valor                     | Significado                                                         |
+| ------------- | ------------------------- | ------------------------------------------------------------------- |
+| **Data/hora** | `2024-06-01 08:00:00`     | Momento em que a comunicação foi registrada                         |
+| **SRC**       | `10.0.0.15`               | **Source (origem)** — IP do dispositivo que iniciou a conexão       |
+| **DST**       | `10.0.0.9`                | **Destination (destino)** — IP do dispositivo que recebeu a conexão |
+| **PORT**      | `3389`                    | Porta utilizada na comunicação                                      |
+| **PROTO**     | `TCP`                     | Protocolo de transporte utilizado                                   |
+| **STATUS**    | `OK`, `TIMEOUT`, `REFUSED`| Comunicação: OK - realizada com sucesso, TIMEOUT - Não respondeu    |  
+|               |                           | REFUSED - conexão foi recusada                                      |
+|               |                           |  (porta fechada, serviço fora do ar, etc.)                          |
+| **LATENCY**   | `14ms`                    | Tempo de resposta da comunicação: 14 milissegundos                  |
+| **BYTES**     | `4589`                    | Quantidade de dados transferidos, nesse registro, 4.589 bytes       |
+
